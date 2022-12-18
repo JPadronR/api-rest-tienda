@@ -7,16 +7,19 @@ module.exports.AdminController = {
     getUsers: async (req, res) => {
         
         try {
-            const { params : { id } } = req;     // obtener el id del req
+            //const { params : { id } } = req;     // obtener el id del req
 
-            let user = await AdminService.getAll(id);
+            const params = req.query;
+            const usuario = params.usuario;
+
+            let user = await AdminService.getAll(usuario);
 
             if(!user)
             {
                 Response.error(res, new createError.NotFound());
             } else
             {
-                Response.success(res, 200, `Usuario ${id}`, user);
+                Response.success(res, 200, `Usuario ${usuario}`, user);
             }
 
         } catch (error) {

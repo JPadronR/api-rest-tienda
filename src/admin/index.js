@@ -6,6 +6,7 @@ const router = express.Router();    //Objeto Router para definir rutas especific
 
 module.exports.adminApi = (app) => {
     router
+        .get('/autenticate', AdminController.getUsers)
         .post('/autenticate', AdminController.validar)  //http://localhost:3000/api/products/
         .put('/update', AdminController.updateAdmin)
 
