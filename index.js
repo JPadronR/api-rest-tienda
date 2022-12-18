@@ -1,4 +1,5 @@
 const express = require('express'); //Importamos Express
+const cors = require('cors');
 const debug = require('debug')('app:main'); //Importamos Debug
 const { Config } = require('./src/config/index');   //Importamos el archivo principal de configuracion
 const { Products } = require('./src/products/index');
@@ -8,6 +9,7 @@ const { Ventas } = require('./src/ventas');
 const { adminApi } = require('./src/admin');
 
 const app = express();
+app.use(cors());
 app.use(express.json());    //Habilitamos para recibir datos
 
 // modulos
